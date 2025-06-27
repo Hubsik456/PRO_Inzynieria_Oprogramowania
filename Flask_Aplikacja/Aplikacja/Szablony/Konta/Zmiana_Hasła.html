@@ -1,0 +1,21 @@
+{% extends "Szablon.html" %}
+{% from "Makra/Wyświetl_Formularz.html" import Wyświetl_Formularz %}
+
+{% block Title %}
+    Zmień Hasło
+{% endblock %}
+
+{% block Treść %}
+    <h2>Zmień Hasło</h2>
+    <p>Wypełnij poniższy formularz aby zmienić swoje hasło.</p>
+
+    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+        <form method="POST">
+            {{ Formularz.csrf_token }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Stare_Hasło) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Nowe_Hasło_1) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Nowe_Hasło_2) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Submit) }}
+        </form>
+    </div>
+{% endblock %}

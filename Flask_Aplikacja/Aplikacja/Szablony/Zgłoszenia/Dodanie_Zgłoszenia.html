@@ -1,0 +1,21 @@
+{% extends "Szablon.html" %}
+{% from "Makra/Lorem_Ipsum.html" import Lorem_Ipsum %}
+{% from "Makra/Wyświetl_Formularz.html" import Wyświetl_Formularz %}
+
+{% block Tytuł %}
+    Dodanie Zgłoszenia
+{% endblock %}
+
+{% block Treść %}
+    <h2>Dodanie Zgłoszenia</h2>
+    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+        <form method="POST">
+            {{ Formularz.csrf_token }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Tytuł) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Kategoria) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Priorytet) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Status) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Submit) }}
+        </form>
+    </div>
+{% endblock %}

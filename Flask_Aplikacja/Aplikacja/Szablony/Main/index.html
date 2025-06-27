@@ -1,0 +1,14 @@
+{% extends "Szablon.html" %}
+{% from "Makra/Lorem_Ipsum.html" import Lorem_Ipsum %}
+
+{% block Tytuł %}
+    Strona Główna
+{% endblock %}
+
+{% block Treść %}
+    <h2>Strona Główna</h2>
+    <p>Wybierz z górnego menu, interesującą Cię pozycję.</p>
+
+    {{ Lorem_Ipsum(10) }}
+
+{% endblock %}

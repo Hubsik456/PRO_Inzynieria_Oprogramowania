@@ -1,0 +1,45 @@
+{% extends "Szablon.html" %}
+{% from "Makra/Lorem_Ipsum.html" import Lorem_Ipsum %}
+
+{% block Tytuł %}
+    Zgłoszenie #{{ ID }}
+{% endblock %}
+
+{% block Treść %}
+    <h2>Zgłoszenie #{{ ID }}</h2>
+    <p>Poniżej znajdują się wszystkie wiadomości z tego zgłoszenia.</p>
+
+    <p>
+        <span class="fw-bold">Kategoria</span>: {{ Zgłoszenie.Kategoria.Nazwa }}
+        <br>
+        <span class="fw-bold">Priorytet</span>: {{ Zgłoszenie.Priorytet.Nazwa }}
+        <br>
+        <span class="fw-bold">Status</span>: {{ Zgłoszenie.Status.Nazwa }}
+    </p>
+    <p>Kliknij <a href="{{ url_for('Blueprint_3.Widok_Zgłoszenia_Edytuj', ID = ID) }}">tutaj</a> aby edytować to zgłoszenie.</p>
+
+    <h3>Historia Zgłoszenia</h3>
+
+    {% if Zgłoszenie.Wiadomość %}
+        <div class="Historia_Zgloszenia">
+        {% for Wiadomość in Zgłoszenie.Wiadomość %}
+            <div id="Wiadomosc_{{ loop.index }}" class="px-4">
+                <span class="text-secondary float-end">{{ Wiadomość.Data_Utworzenia | Filtr_Data_Godzina }} | <a href="#Wiadomosc_{{ loop.index }}">#{{ loop.index }}</a></span>
+                <span class="text-secondary float-start">Od: "{{ Wiadomość.Zgłoszenie.Autor.Login }}"</span>
+                <br>
+                <div class="text-break">{{ Wiadomość.Treść }}</div>
+            </div>
+
+            <hr>
+        {% endfor %}
+        </div>
+
+    {% else %}
+        <p class="text-center fw-bold">W tym zgłoszeniu nie ma żadnych wiadomości.</p>
+
+        <hr>
+    {% endif %}
+
+
+    <p>Kliknij <a href="{{ url_for('Blueprint_3.Widok_Zgłoszenia_Nowa_Wiadomość', ID = ID) }}">tutaj</a> aby dodać nową wiadomość.</p>
+{% endblock %}

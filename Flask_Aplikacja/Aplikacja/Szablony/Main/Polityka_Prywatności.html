@@ -1,0 +1,11 @@
+{% extends "Szablon.html" %}
+{% from "Makra/Lorem_Ipsum.html" import Lorem_Ipsum %}
+
+{% block Tytuł %}
+    Polityka Prywatności
+{% endblock %}
+
+{% block Treść %}
+    <h2>Polityka Prywatności</h2>
+    {{ Lorem_Ipsum(3) }}
+{% endblock %}

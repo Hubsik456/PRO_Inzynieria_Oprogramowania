@@ -1,0 +1,20 @@
+{% extends "Szablon.html" %}
+{% from "Makra/Wyświetl_Formularz.html" import Wyświetl_Formularz %}
+
+{% block Tytuł %}
+    Usuń Konto
+{% endblock %}
+
+{% block Treść %}
+    <h2>Usuń Konto</h2>
+    <p>Wypełnij poniższy formularz jeśli chcesz usunąć swoje konto. Tej akcji nie można cofnąć!</p>
+
+    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+        <form method="POST">
+            {{ Formularz.csrf_token }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Hasło_1) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Hasło_2) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Submit) }}
+        </form>
+    </div>
+{% endblock %}

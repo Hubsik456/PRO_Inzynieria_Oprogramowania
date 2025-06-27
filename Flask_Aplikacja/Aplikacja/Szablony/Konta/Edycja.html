@@ -1,0 +1,21 @@
+{% extends "Szablon.html" %}
+{% from "Makra/Wyświetl_Formularz.html" import Wyświetl_Formularz %}
+
+{% block Tytuł %}
+    Edytuj Swoje Konto
+{% endblock %}
+
+{% block Treść %}
+    <h2>Edytuj Swoje Konto</h2>
+    <p>Twoje dane:</p>
+
+    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+        <form method="POST">
+            {{ Formularz.csrf_token }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Login) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Email) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Opis) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Submit) }}
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "Szablon.html" %}
+{% from "Makra/Wyświetl_Formularz.html" import Wyświetl_Formularz %}
+
+{% block Tytuł %}
+    Rejestracja
+{% endblock %}
+
+{% block Treść %}
+    <h2>Rejestracja</h2>
+    <p>Wypełnij poniższy formularz aby utworzyć nowe konto. Jeśli masz już konto, kliknij <a href="{{ url_for('Blueprint_2.Widok_Konta_Logowanie') }}">tutaj</a> aby się zalogować.</p>
+    <p>Przed rejestracją zapoznaj się z <a href="{{ url_for('Blueprint_1.Widok_Polityka_Prywatności') }}">polityką prywatności</a>.</p>
+
+    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+        <form method="POST">
+            {{ Formularz.csrf_token }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Login) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Hasło_1) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Hasło_2) }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Email, value="wip_X@wip") }}
+            {{ Wyświetl_Formularz(Formularz.Pole_Submit) }}
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "Szablon.html" %}
+{% from "Makra/Lorem_Ipsum.html" import Lorem_Ipsum %}
+
+{% block Tytuł %}
+    Błąd
+{% endblock %}
+
+{% block Treść %}
+    <h2 class="text-center">Błąd: <span class="text-danger fw-bolder">{{ Komunikat }}</span></h2>
+
+    {{ Lorem_Ipsum(3) }}
+{% endblock %}

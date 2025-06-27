@@ -1,0 +1,53 @@
+{% extends "Szablon.html" %}
+{% from "Makra/Lorem_Ipsum.html" import Lorem_Ipsum %}
+
+{% block Tytuł %}
+    Zgłoszenia
+{% endblock %}
+
+{% block Treść %}
+    <h2>Zgłoszenia</h2>
+    <p>Poniżej znajdują się wszystkie zgłoszenia:</p>
+
+    {% if Dostępne_Zgłoszenia %}
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr class="table-primary">
+                    <th>#</th>
+                    <th>Tytuł:</th>
+                    <th>Autor:</th>
+                    <th>Data Utworzenia:</th>
+                    <th>Kategoria:</th>
+                    <th>Prioryt:</th>
+                    <th>Status:</th>
+                    <th>Szczegóły</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Zgłoszenie in Dostępne_Zgłoszenia %}
+                    <tr>
+                        <td>
+                            {{ loop.index }}
+                            <span class="d-none"><br>{{ Zgłoszenie.ID }}</span>
+                        </td>
+                        <td>{{ Zgłoszenie.Tytuł }}</td>
+                        <td>{{ Zgłoszenie.Autor.Login }}</td>
+                        <td>{{ Zgłoszenie.Data_Utworzenia }}</td>
+                        <td>{{ Zgłoszenie.Kategoria.Nazwa }}</td>
+                        <td>{{ Zgłoszenie.Priorytet.Nazwa }}</td>
+                        <td>{{ Zgłoszenie.Status.Nazwa  }}</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="{{ url_for('Blueprint_3.Widok_Zgłoszenia_Wyświetl_Zgłoszenie', ID = Zgłoszenie.ID) }}">Wyświetl</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <p>Brak zgłoszeń do wyświetlenia.</p>
+
+    {% endif %}
+
+    <p>Kliknij <a href="{{ url_for('Blueprint_3.Widok_Zgłoszenia_Dodaj_Zgłoszenie' )}}">tutaj</a> aby dodać nowe zgłoszenie.</p>
+{% endblock %}
